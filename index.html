@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>SpendWise Dashboard</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -15,178 +13,201 @@
 
         <!-- Sidebar -->
         <aside class="sidebar">
-
-            <div>
-                <h1 class="logo">SpendWise</h1>
-
-                <nav class="navigation">
-                    <a href="#" class="nav-link active">Dashboard</a>
-                    <a href="#" class="nav-link">Transactions</a>
-                    <a href="#" class="nav-link">Analytics</a>
-                    <a href="#" class="nav-link">Budgets</a>
-                    <a href="#" class="nav-link">Settings</a>
-                </nav>
+            <div class="logo">
+                <h2>SpendWise</h2>
+                <p>Smart Budgeting</p>
             </div>
+
+            <nav class="navigation">
+                <a href="#" class="nav-link active">Dashboard</a>
+                <a href="#" class="nav-link">Transactions</a>
+                <a href="#" class="nav-link">Analytics</a>
+                <a href="#" class="nav-link">Budgets</a>
+                <a href="#" class="nav-link">Settings</a>
+            </nav>
 
             <div class="sidebar-footer">
                 <p>Manage your money wisely.</p>
             </div>
-
         </aside>
-
 
         <!-- Main Content -->
         <main class="main-content">
 
             <!-- Header -->
             <header class="header">
-
                 <div>
                     <p class="welcome">Good morning, Simon 👋</p>
-                    <h2>Financial Overview</h2>
+                    <h1>Financial Overview</h1>
                 </div>
 
-                <div class="profile">
-                    <span>SO</span>
-                    <strong>Simon Ohure</strong>
+                <div class="header-actions">
+                    <button class="notification">🔔</button>
+                    <div class="profile">
+                        <strong>Simon Ohure</strong>
+                    </div>
                 </div>
-
             </header>
-
 
             <!-- Summary -->
             <section class="summary">
 
-                <div class="summary-box">
+                <div class="summary-card">
                     <p>Total Balance</p>
-                    <h3 id="balanceDisplay">KES 185,400</h3>
+                    <h2 id="balance-display">KES 185,400</h2>
                 </div>
 
-                <div class="summary-box">
+                <div class="summary-card">
                     <p>Monthly Income</p>
-                    <h3>KES 95,000</h3>
+                    <h2>KES 95,000</h2>
                 </div>
 
-                <div class="summary-box">
+                <div class="summary-card">
                     <p>Monthly Expenses</p>
-                    <h3 id="expenseDisplay">KES 58,600</h3>
+                    <h2>KES 58,600</h2>
                 </div>
 
             </section>
 
+            <!-- Budget Information -->
+            <section class="budget-section">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">JavaScript Budget Tool</p>
+                        <h2>Budget Calculator</h2>
+                    </div>
+                </div>
 
-            <!-- Budget Calculator -->
-            <section class="calculator">
+                <div class="calculator-box">
+                    <p>
+                        Use the JavaScript prompts to enter your monthly budget
+                        and expenses. Results will appear in the browser console.
+                    </p>
 
-                <h2>Budget Calculator</h2>
-
-                <p>
-                    Enter your budget information to calculate your remaining balance.
-                </p>
-
-                <button id="calculateButton">
-                    Calculate Budget
-                </button>
-
+                    <button id="start-calculator" class="calculate-button">
+                        Calculate My Budget
+                    </button>
+                </div>
             </section>
 
-
-            <!-- Categories -->
+            <!-- Expense Cards -->
             <section>
-
-                <h2 class="section-title">Spending Categories</h2>
+                <div class="section-heading">
+                    <h2>Spending Categories</h2>
+                </div>
 
                 <div class="cards">
 
                     <div class="card" tabindex="0">
-                        <h3>Food</h3>
-                        <p>KES 14,200</p>
+                        <div class="card-top">
+                            <span class="category-icon">🍔</span>
+                            <span>Food</span>
+                        </div>
+                        <h3>KES 14,200</h3>
                         <div class="progress">
-                            <span style="width: 70%;"></span>
+                            <div class="progress-bar" style="width: 65%;"></div>
                         </div>
                     </div>
 
                     <div class="card" tabindex="0">
-                        <h3>Transport</h3>
-                        <p>KES 7,050</p>
+                        <div class="card-top">
+                            <span class="category-icon">🚌</span>
+                            <span>Transport</span>
+                        </div>
+                        <h3>KES 7,050</h3>
                         <div class="progress">
-                            <span style="width: 45%;"></span>
+                            <div class="progress-bar" style="width: 45%;"></div>
                         </div>
                     </div>
 
                     <div class="card" tabindex="0">
-                        <h3>Rent</h3>
-                        <p>KES 18,000</p>
+                        <div class="card-top">
+                            <span class="category-icon">🏠</span>
+                            <span>Rent</span>
+                        </div>
+                        <h3>KES 18,000</h3>
                         <div class="progress">
-                            <span style="width: 80%;"></span>
+                            <div class="progress-bar" style="width: 80%;"></div>
                         </div>
                     </div>
 
                     <div class="card" tabindex="0">
-                        <h3>Entertainment</h3>
-                        <p>KES 4,500</p>
+                        <div class="card-top">
+                            <span class="category-icon">🎬</span>
+                            <span>Entertainment</span>
+                        </div>
+                        <h3>KES 4,500</h3>
                         <div class="progress">
-                            <span style="width: 30%;"></span>
+                            <div class="progress-bar" style="width: 35%;"></div>
                         </div>
                     </div>
 
                     <div class="card" tabindex="0">
-                        <h3>Savings</h3>
-                        <p>KES 10,500</p>
+                        <div class="card-top">
+                            <span class="category-icon">💰</span>
+                            <span>Savings</span>
+                        </div>
+                        <h3>KES 10,500</h3>
                         <div class="progress">
-                            <span style="width: 60%;"></span>
+                            <div class="progress-bar" style="width: 55%;"></div>
                         </div>
                     </div>
 
                     <div class="card" tabindex="0">
-                        <h3>Utilities</h3>
-                        <p>KES 4,350</p>
+                        <div class="card-top">
+                            <span class="category-icon">💡</span>
+                            <span>Utilities</span>
+                        </div>
+                        <h3>KES 4,350</h3>
                         <div class="progress">
-                            <span style="width: 35%;"></span>
+                            <div class="progress-bar" style="width: 30%;"></div>
                         </div>
                     </div>
 
                 </div>
-
             </section>
 
-
             <!-- Recent Activity -->
-            <section class="activity">
+            <section class="activity-section">
 
-                <h2 class="section-title">Recent Activity</h2>
-
-                <div class="activity-item">
-                    <span>🛒</span>
-                    <div>
-                        <strong>Supermarket</strong>
-                        <p>Food expense</p>
-                    </div>
-                    <strong>- KES 3,500</strong>
+                <div class="section-heading">
+                    <h2>Recent Activity</h2>
                 </div>
 
-                <div class="activity-item">
-                    <span>⛽</span>
-                    <div>
-                        <strong>Fuel Station</strong>
-                        <p>Transport expense</p>
-                    </div>
-                    <strong>- KES 2,000</strong>
-                </div>
+                <div class="activity-list">
 
-                <div class="activity-item">
-                    <span>💰</span>
-                    <div>
-                        <strong>Monthly Salary</strong>
-                        <p>Income</p>
+                    <div class="activity-item">
+                        <span>🛒</span>
+                        <div>
+                            <strong>Supermarket</strong>
+                            <p>Food</p>
+                        </div>
+                        <strong>- KES 2,500</strong>
                     </div>
-                    <strong>+ KES 95,000</strong>
+
+                    <div class="activity-item">
+                        <span>⛽</span>
+                        <div>
+                            <strong>Fuel Station</strong>
+                            <p>Transport</p>
+                        </div>
+                        <strong>- KES 1,800</strong>
+                    </div>
+
+                    <div class="activity-item">
+                        <span>💼</span>
+                        <div>
+                            <strong>Monthly Salary</strong>
+                            <p>Income</p>
+                        </div>
+                        <strong>+ KES 95,000</strong>
+                    </div>
+
                 </div>
 
             </section>
 
         </main>
-
     </div>
 
     <!-- JavaScript -->

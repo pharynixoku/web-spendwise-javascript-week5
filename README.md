@@ -1,30 +1,25 @@
-# SpendWise JavaScript Foundation
+# SpendWise - JavaScript Foundation
 
 ## Project Description
 
-SpendWise is a personal budgeting dashboard designed to help users understand their income, expenses, and remaining balance. This project extends the SpendWise visual dashboard by adding JavaScript functionality for processing budgeting information.
-
-## Files
-
-- `index.html` - Contains the structure of the SpendWise dashboard.
-- `style.css` - Contains the styling, layout, responsive design, and dark theme.
-- `script.js` - Contains the JavaScript functionality.
-- `README.md` - Contains information about the project.
+SpendWise is a simple budgeting and expense management web application. The project helps users understand their income, expenses, remaining balance, and weekly budget. This week's assignment adds JavaScript functionality to the existing SpendWise dashboard.
 
 ## JavaScript Concepts Implemented
 
-The project uses several JavaScript concepts learned during the week:
+The project demonstrates the following JavaScript concepts:
 
 - Variables
+- Constants
 - Data types
 - User input
 - Number conversion
 - Arithmetic calculations
 - Functions
-- Template literals
-- Console output
-- Event listeners
+- Return values
 - Conditional statements
+- Console output
+- DOM manipulation
+- Event listeners
 
 ## Variables
 
@@ -33,5 +28,6 @@ Variables are used to store important budgeting information.
 For example:
 
 ```javascript
-let monthlyBudget = 50000;
-let monthlyExpenses = 15000;
+const appName = "SpendWise";
+let budget = 50000;
+let expense = 15000;

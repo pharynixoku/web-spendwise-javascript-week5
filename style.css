@@ -1,33 +1,14 @@
-/* ========================================
-   SpendWise Dashboard
-   CSS Grid + Flexbox
-   ======================================== */
-
-
-/* ========================================
-   1. CSS CUSTOM PROPERTIES
-   ======================================== */
-
 :root {
     --brand-color: #2563eb;
     --accent-color: #10b981;
-
     --background-color: #f5f7fb;
     --surface-color: #ffffff;
-
     --primary-text: #172033;
     --secondary-text: #697386;
-
     --border-color: #e5e7eb;
     --danger-color: #ef4444;
-
     --shadow: 0 8px 25px rgba(23, 32, 51, 0.07);
 }
-
-
-/* ========================================
-   2. BASIC RESET
-   ======================================== */
 
 * {
     margin: 0;
@@ -35,168 +16,76 @@
     box-sizing: border-box;
 }
 
-
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
     background: var(--background-color);
     color: var(--primary-text);
-    line-height: 1.5;
 }
-
-
-/* ========================================
-   3. MAIN DASHBOARD - CSS GRID
-   ======================================== */
 
 .dashboard {
     min-height: 100vh;
-
     display: grid;
-
     grid-template-columns: 250px 1fr;
 }
 
-
-/* ========================================
-   4. SIDEBAR - FLEXBOX
-   ======================================== */
+/* Sidebar */
 
 .sidebar {
     background: var(--surface-color);
-
     border-right: 1px solid var(--border-color);
-
     padding: 30px 20px;
-
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
-
 
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    margin-bottom: 45px;
-}
-
-
-.logo span {
-    font-size: 28px;
-}
-
-
-.logo h2 {
     color: var(--brand-color);
-    font-size: 22px;
+    margin-bottom: 35px;
 }
-
 
 .navigation {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
 }
-
 
 .nav-link {
     text-decoration: none;
     color: var(--secondary-text);
-
-    padding: 13px 15px;
-
-    border-radius: 10px;
-
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    transition: 0.2s ease;
+    padding: 12px;
+    border-radius: 8px;
 }
 
-
-.nav-link:hover {
-    background: #eef4ff;
-    color: var(--brand-color);
-}
-
-
+.nav-link:hover,
 .nav-link.active {
     background: var(--brand-color);
     color: white;
 }
 
-
 .sidebar-footer {
-    margin-top: auto;
-
     color: var(--secondary-text);
-    font-size: 13px;
+    font-size: 14px;
 }
 
 
-/* ========================================
-   5. MAIN CONTENT
-   ======================================== */
+/* Main Content */
 
 .main-content {
-    padding: 35px;
-
-    max-width: 1500px;
-    width: 100%;
-    margin: auto;
+    padding: 30px;
 }
-
-
-/* ========================================
-   6. HEADER - FLEXBOX
-   ======================================== */
 
 .header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-
-    gap: 20px;
-
+    align-items: center;
     margin-bottom: 30px;
 }
 
-
-.greeting {
+.welcome {
     color: var(--secondary-text);
-    font-size: 14px;
-
-    margin-bottom: 4px;
+    margin-bottom: 5px;
 }
-
-
-.header h1 {
-    font-size: 30px;
-}
-
-
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-
-.notification {
-    border: 1px solid var(--border-color);
-
-    background: var(--surface-color);
-
-    border-radius: 10px;
-
-    width: 44px;
-    height: 44px;
-
-    cursor: pointer;
-}
-
 
 .profile {
     display: flex;
@@ -204,350 +93,159 @@ body {
     gap: 10px;
 }
 
-
-.profile small {
-    display: block;
-    color: var(--secondary-text);
-    font-size: 12px;
-}
-
-
-.avatar {
-    width: 42px;
-    height: 42px;
-
+.profile span {
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-
     background: var(--brand-color);
     color: white;
-
     display: flex;
-    align-items: center;
     justify-content: center;
-
-    font-weight: bold;
+    align-items: center;
 }
 
 
-/* ========================================
-   7. SUMMARY - FLEXBOX
-   ======================================== */
+/* Summary */
 
 .summary {
     display: flex;
     gap: 20px;
-
-    margin-bottom: 35px;
+    margin-bottom: 30px;
 }
 
-
-.summary-item {
+.summary-box {
     background: var(--surface-color);
-
-    padding: 22px;
-
-    border-radius: 14px;
-
-    box-shadow: var(--shadow);
-
+    padding: 25px;
+    border-radius: 12px;
     flex: 1;
-
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+    box-shadow: var(--shadow);
 }
 
-
-.summary-item span {
+.summary-box p {
     color: var(--secondary-text);
-    font-size: 14px;
+    margin-bottom: 10px;
 }
 
-
-.summary-item strong {
+.summary-box h3 {
     font-size: 24px;
 }
 
 
-.summary-item small {
-    color: var(--accent-color);
+/* Calculator */
+
+.calculator {
+    background: var(--surface-color);
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow);
 }
 
+.calculator h2 {
+    margin-bottom: 10px;
+}
 
-/* ========================================
-   8. SECTION HEADINGS - FLEXBOX
-   ======================================== */
-
-.section-heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
+.calculator p {
+    color: var(--secondary-text);
     margin-bottom: 20px;
 }
 
-
-.section-label {
-    color: var(--secondary-text);
-    font-size: 13px;
-}
-
-
-.section-heading h2 {
-    font-size: 22px;
-}
-
-
-.view-button {
+#calculateButton {
+    background: var(--brand-color);
+    color: white;
     border: none;
-    background: transparent;
-
-    color: var(--brand-color);
-
+    padding: 12px 20px;
+    border-radius: 8px;
     cursor: pointer;
+}
 
-    font-weight: bold;
+#calculateButton:hover {
+    opacity: 0.9;
 }
 
 
-/* ========================================
-   9. CATEGORY CARDS - CSS GRID
-   ======================================== */
+/* Category Cards */
+
+.section-title {
+    margin-bottom: 20px;
+}
 
 .cards {
     display: grid;
-
     grid-template-columns: repeat(3, 1fr);
-
     gap: 20px;
+    margin-bottom: 30px;
 }
-
 
 .card {
     background: var(--surface-color);
-
-    border: 1px solid var(--border-color);
-
-    border-radius: 15px;
-
     padding: 22px;
-
-    min-height: 210px;
-
-    display: flex;
-    flex-direction: column;
-
+    border-radius: 12px;
+    box-shadow: var(--shadow);
     cursor: pointer;
-
     transition:
         transform 200ms ease,
         box-shadow 200ms ease;
 }
 
-
-/* Required hover interaction */
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow);
-}
-
-
-/* Required keyboard focus interaction */
+.card:hover,
 .card:focus {
-    outline: 3px solid rgba(37, 99, 235, 0.25);
-
     transform: translateY(-5px);
     box-shadow: var(--shadow);
 }
 
-
-.card-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    margin-bottom: 25px;
+.card h3 {
+    margin-bottom: 10px;
 }
 
-
-.card-icon {
-    width: 45px;
-    height: 45px;
-
-    border-radius: 12px;
-
-    background: #eef4ff;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 21px;
-}
-
-
-.percentage {
+.card p {
     color: var(--secondary-text);
-    font-size: 13px;
+    margin-bottom: 15px;
 }
-
-
-.card-content {
-    display: flex;
-    flex-direction: column;
-
-    gap: 3px;
-}
-
-
-.card-content h3 {
-    font-size: 17px;
-}
-
-
-.card-content p {
-    color: var(--secondary-text);
-    font-size: 13px;
-
-    margin-bottom: 12px;
-}
-
-
-.card-content strong {
-    font-size: 22px;
-}
-
-
-/* ========================================
-   10. PROGRESS BAR
-   ======================================== */
 
 .progress {
-    height: 6px;
-
-    background: #edf0f4;
-
-    border-radius: 10px;
-
-    margin-top: auto;
-
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 20px;
     overflow: hidden;
 }
 
-
 .progress span {
     display: block;
-
     height: 100%;
-
     background: var(--brand-color);
-
-    border-radius: inherit;
 }
 
 
-/* ========================================
-   11. RECENT ACTIVITY
-   ======================================== */
+/* Activity */
 
 .activity {
-    margin-top: 40px;
-
     background: var(--surface-color);
-
-    border-radius: 15px;
-
     padding: 25px;
-
+    border-radius: 12px;
     box-shadow: var(--shadow);
 }
-
-
-.activity-list {
-    display: flex;
-    flex-direction: column;
-}
-
 
 .activity-item {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-
+    gap: 15px;
     padding: 15px 0;
-
     border-bottom: 1px solid var(--border-color);
 }
 
-
-.activity-item:last-child {
-    border-bottom: none;
+.activity-item div {
+    flex: 1;
 }
 
-
-.activity-info {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-
-.activity-icon {
-    width: 40px;
-    height: 40px;
-
-    border-radius: 10px;
-
-    background: #f0f4f8;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-.activity-info small {
-    display: block;
-
+.activity-item p {
     color: var(--secondary-text);
-
-    font-size: 12px;
+    font-size: 14px;
+    margin-top: 4px;
 }
 
 
-.expense {
-    color: var(--danger-color);
-}
-
-
-.income {
-    color: var(--accent-color);
-}
-
-
-/* ========================================
-   12. DARK THEME - STRETCH GOAL
-   ======================================== */
-
-@media (prefers-color-scheme: dark) {
-
-    :root {
-        --background-color: #111827;
-        --surface-color: #1f2937;
-
-        --primary-text: #f9fafb;
-        --secondary-text: #9ca3af;
-
-        --border-color: #374151;
-
-        --shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-    }
-}
-
-
-/* ========================================
-   13. RESPONSIVE DESIGN
-   ======================================== */
+/* Responsive */
 
 @media (max-width: 768px) {
 
@@ -555,66 +253,47 @@ body {
         grid-template-columns: 1fr;
     }
 
-
     .sidebar {
         border-right: none;
         border-bottom: 1px solid var(--border-color);
-
-        padding: 20px;
     }
-
-
-    .logo {
-        margin-bottom: 20px;
-    }
-
 
     .navigation {
         flex-direction: row;
-
         flex-wrap: wrap;
     }
 
-
     .nav-link {
         flex: 1;
-        justify-content: center;
+        text-align: center;
     }
-
-
-    .sidebar-footer {
-        display: none;
-    }
-
-
-    .main-content {
-        padding: 20px;
-    }
-
-
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-
-    .header-actions {
-        width: 100%;
-        justify-content: space-between;
-    }
-
 
     .summary {
         flex-direction: column;
     }
 
-
     .cards {
         grid-template-columns: 1fr;
     }
 
-
-    .activity-item {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
         gap: 15px;
+    }
+}
+
+
+/* Dark Theme */
+
+@media (prefers-color-scheme: dark) {
+
+    :root {
+        --background-color: #111827;
+        --surface-color: #1f2937;
+        --primary-text: #f9fafb;
+        --secondary-text: #9ca3af;
+        --border-color: #374151;
+        --shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
     }
 }

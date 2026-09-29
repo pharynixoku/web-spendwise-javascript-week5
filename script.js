@@ -1,322 +1,203 @@
 // ==========================================
-// SpendWise Interactive JavaScript
+// SpendWise JavaScript Foundation
 // ==========================================
 
+// Step 1: Store application information
 
-// 1. Store application data
+const appName = "SpendWise";
+const currency = "KES";
 
-let monthlyBudget = 50000;
+// Default budgeting data
+let budget = 50000;
+let expense = 15000;
 
-
-// Array for storing multiple expense records
-
-let expenses = [];
-
-
-// ==========================================
-// 2. Get HTML elements from the DOM
-// ==========================================
-
-const budgetForm = document.getElementById("budgetForm");
-
-const budgetInput = document.getElementById("budgetInput");
-
-const expenseForm = document.getElementById("expenseForm");
-
-const expenseName = document.getElementById("expenseName");
-
-const expenseAmount = document.getElementById("expenseAmount");
-
-const budgetDisplay = document.getElementById("budgetDisplay");
-
-const expenseDisplay = document.getElementById("expenseDisplay");
-
-const balanceDisplay = document.getElementById("balanceDisplay");
-
-const budgetMessage = document.getElementById("budgetMessage");
-
-const expenseList = document.getElementById("expenseList");
-
-const clearButton = document.getElementById("clearButton");
+let expenseName = "Monthly Expenses";
+let expenseAmount = 15000;
 
 
 // ==========================================
-// 3. Budget calculation function
+// Step 2: Create reusable functions
 // ==========================================
 
-function calculateTotalExpenses() {
+// Function to calculate remaining balance
+function calculateBalance(budget, expense) {
+    return budget - expense;
+}
 
-    let total = 0;
 
-    // Loop through all expenses
+// Function to calculate weekly budget
+function calculateWeeklyBudget(monthlyBudget) {
+    return monthlyBudget / 4;
+}
 
-    for (let i = 0; i < expenses.length; i++) {
 
-        total = total + expenses[i].amount;
+// Function to calculate expense percentage
+function calculateExpensePercentage(budget, expense) {
+    return (expense / budget) * 100;
+}
 
+
+// ==========================================
+// Step 3: Collect user input
+// ==========================================
+
+function startBudgetCalculator() {
+
+    // Ask the user for their budget
+    let userBudget = Number(
+        prompt("Enter your monthly budget in KES:")
+    );
+
+    // Ask the user for their expenses
+    let userExpense = Number(
+        prompt("Enter your total monthly expenses in KES:")
+    );
+
+
+    // Check if the user entered valid numbers
+    if (isNaN(userBudget) || isNaN(userExpense)) {
+
+        console.log("Please enter valid numbers.");
+
+        return;
     }
 
-    return total;
-}
+
+    // ==========================================
+    // Step 4: Perform calculations
+    // ==========================================
+
+    let balance = calculateBalance(
+        userBudget,
+        userExpense
+    );
+
+    let weeklyBudget = calculateWeeklyBudget(
+        userBudget
+    );
+
+    let expensePercentage = calculateExpensePercentage(
+        userBudget,
+        userExpense
+    );
 
 
-// ==========================================
-// 4. Calculate remaining balance
-// ==========================================
+    // ==========================================
+    // Step 5: Display results in console
+    // ==========================================
 
-function calculateBalance() {
+    console.log("================================");
+    console.log(appName + " Budget Report");
+    console.log("================================");
 
-    const totalExpenses = calculateTotalExpenses();
+    console.log("Monthly Budget:", currency, userBudget);
 
-    return monthlyBudget - totalExpenses;
-}
+    console.log(
+        "Monthly Expenses:",
+        currency,
+        userExpense
+    );
+
+    console.log(
+        "Remaining Balance:",
+        currency,
+        balance
+    );
+
+    console.log(
+        "Weekly Budget:",
+        currency,
+        weeklyBudget
+    );
+
+    console.log(
+        "Expense Percentage:",
+        expensePercentage.toFixed(2) + "%"
+    );
 
 
-// ==========================================
-// 5. Update dashboard
-// ==========================================
+    // Display a message depending on the balance
+    if (balance > 0) {
 
-function updateDashboard() {
+        console.log(
+            "Status: You have money remaining in your budget."
+        );
 
-    const totalExpenses = calculateTotalExpenses();
+    } else if (balance === 0) {
 
-    const remainingBalance = calculateBalance();
+        console.log(
+            "Status: Your budget has been fully used."
+        );
+
+    } else {
+
+        console.log(
+            "Status: You have exceeded your budget."
+        );
+    }
 
 
-    // Update the HTML
-
-    budgetDisplay.textContent =
-        `KES ${monthlyBudget.toLocaleString()}`;
-
-    expenseDisplay.textContent =
-        `KES ${totalExpenses.toLocaleString()}`;
+    // Update the balance displayed on the webpage
+    const balanceDisplay =
+        document.getElementById("balance-display");
 
     balanceDisplay.textContent =
-        `KES ${remainingBalance.toLocaleString()}`;
+        currency + " " + balance.toLocaleString();
 
 
-    // ======================================
-    // Conditional statements
-    // ======================================
-
-    if (remainingBalance < 0) {
-
-        budgetMessage.textContent =
-            "⚠️ You have exceeded your budget.";
-
-        budgetMessage.style.color = "#ef4444";
-
-    }
-
-    else if (remainingBalance === 0) {
-
-        budgetMessage.textContent =
-            "⚠️ You have used your entire budget.";
-
-        budgetMessage.style.color = "#f59e0b";
-
-    }
-
-    else if (remainingBalance < monthlyBudget * 0.2) {
-
-        budgetMessage.textContent =
-            "⚠️ Your remaining balance is getting low.";
-
-        budgetMessage.style.color = "#f59e0b";
-
-    }
-
-    else {
-
-        budgetMessage.textContent =
-            "✅ Your spending is within your budget.";
-
-        budgetMessage.style.color = "#10b981";
-
-    }
-
-
-    // Display the expense records
-
-    displayExpenses();
+    console.log("================================");
 }
 
 
 // ==========================================
-// 6. Display expenses using a loop
+// Step 6: Connect JavaScript to the button
 // ==========================================
 
-function displayExpenses() {
-
-    expenseList.innerHTML = "";
-
-
-    // Check if there are no expenses
-
-    if (expenses.length === 0) {
-
-        expenseList.innerHTML =
-            '<p class="empty-message">No expenses added yet.</p>';
-
-        return;
-    }
+const calculatorButton =
+    document.getElementById("start-calculator");
 
 
-    // Loop through the expense array
-
-    for (let i = 0; i < expenses.length; i++) {
-
-        const expense = expenses[i];
-
-
-        // Create HTML for each expense
-
-        const expenseItem = document.createElement("div");
-
-        expenseItem.className = "expense-item";
-
-
-        expenseItem.innerHTML = `
-            <strong>${expense.name}</strong>
-            <span>- KES ${expense.amount.toLocaleString()}</span>
-        `;
-
-
-        // Add the expense to the webpage
-
-        expenseList.appendChild(expenseItem);
-    }
-}
+calculatorButton.addEventListener(
+    "click",
+    startBudgetCalculator
+);
 
 
 // ==========================================
-// 7. Handle budget form
+// Step 7: Display initial data
 // ==========================================
 
-budgetForm.addEventListener("submit", function(event) {
-
-    // Stop the page from refreshing
-
-    event.preventDefault();
-
-
-    const newBudget = Number(budgetInput.value);
-
-
-    // Validate budget
-
-    if (newBudget <= 0 || isNaN(newBudget)) {
-
-        alert("Please enter a valid budget amount.");
-
-        return;
-    }
-
-
-    // Update the budget
-
-    monthlyBudget = newBudget;
-
-
-    // Update the webpage
-
-    updateDashboard();
-
-
-    // Clear the input
-
-    budgetInput.value = "";
-
-});
-
-
-// ==========================================
-// 8. Handle expense form
-// ==========================================
-
-expenseForm.addEventListener("submit", function(event) {
-
-    // Stop page refresh
-
-    event.preventDefault();
-
-
-    const name = expenseName.value.trim();
-
-    const amount = Number(expenseAmount.value);
-
-
-    // Validate user input
-
-    if (name === "" || amount <= 0 || isNaN(amount)) {
-
-        alert("Please enter a valid expense name and amount.");
-
-        return;
-    }
-
-
-    // Create an expense object
-
-    const newExpense = {
-
-        name: name,
-
-        amount: amount
-
-    };
-
-
-    // Add expense to array
-
-    expenses.push(newExpense);
-
-
-    // Update dashboard
-
-    updateDashboard();
-
-
-    // Clear form fields
-
-    expenseName.value = "";
-
-    expenseAmount.value = "";
-
-});
-
-
-// ==========================================
-// 9. Clear all expenses
-// ==========================================
-
-clearButton.addEventListener("click", function() {
-
-    if (expenses.length === 0) {
-
-        alert("There are no expenses to clear.");
-
-        return;
-    }
-
-
-    const confirmClear =
-        confirm("Are you sure you want to clear all expenses?");
-
-
-    if (confirmClear) {
-
-        expenses = [];
-
-        updateDashboard();
-
-    }
-
-});
-
-
-// ==========================================
-// 10. Load the dashboard
-// ==========================================
-
-updateDashboard();
+let initialBalance = calculateBalance(
+    budget,
+    expense
+);
+
+let initialWeeklyBudget = calculateWeeklyBudget(
+    budget
+);
+
+console.log("Welcome to " + appName);
+
+console.log(
+    "Initial Budget:",
+    currency,
+    budget
+);
+
+console.log(
+    "Initial Expense:",
+    currency,
+    expense
+);
+
+console.log(
+    "Initial Remaining Balance:",
+    currency,
+    initialBalance
+);
+
+console.log(
+    "Initial Weekly Budget:",
+    currency,
+    initialWeeklyBudget
+);
